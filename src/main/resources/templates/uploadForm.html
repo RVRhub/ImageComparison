@@ -1,0 +1,76 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<div th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>
+	<div style="color:red;" th:if="${error}">
+		<h2 th:text="'Error: '+${error}"/>
+	</div>
+
+	<div>
+		<form method="POST" enctype="multipart/form-data" action="/first/">
+			<table>
+				<tr><td>File to upload1:</td><td><input type="file" name="file" /></td></tr>
+				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+			</table>
+		</form>
+	</div>
+
+	<div>
+		<form method="POST" enctype="multipart/form-data" action="/second/">
+			<table>
+				<tr><td>File to upload2:</td><td><input type="file" name="file" /></td></tr>
+				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
+			</table>
+		</form>
+	</div>
+
+	<div>
+		<ul>
+			<li th:each="file : ${files}">
+				<a th:href="${file}" th:text="${file}" />
+			</li>
+		</ul>
+	</div>
+
+	<div>
+
+		<form action="/comparison" method="GET">
+
+
+			<table>
+				<tr><td>Enter a list of excluded rectangles([x,y,w,h]]:</td></tr>
+				<tr>
+					<td><textarea class="textarea" th:text="${excludeRects}"
+								  rows="5" cols="50" style="margin-top: 10px;"
+								  placeholder="Example: [10,120,10,10], [10,120,10,10]"
+								  name="excludeRects">
+                    </textarea></td></tr>
+				<tr><td><button type="submit" name="action" value="comparison">Comparison</button></td></tr>
+			</table>
+
+
+
+		</form>
+	</div>
+
+	<div>
+		<form action="/clean" method="GET">
+			<button type="submit" name="action" value="clean">clean</button>
+		</form>
+	</div>
+
+	<div >
+	<form>
+		<label >Result :</label>
+		<p>
+			<img th:src="@{/image/${session.execute}}" />
+
+		</p>
+	</form>
+	</div>
+
+
+</body>
+</html>
