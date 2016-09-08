@@ -12,11 +12,11 @@ Technologies
 How to run the application?:
 
 Two ways:
-    * WEB:
+    1.  WEB:
     >> mvn clean package
     >> java -jar target/image-comparison-1.0-SNAPSHOT.jar
     >> Go to url: http://0.0.0.0:8080/
-    * Console:
+    2.  Console:
         - We need to find a class: com.rybak.agileengine.Main
         - Configure Settings: firstImage/secondImage/resultFileName
         - Run it
